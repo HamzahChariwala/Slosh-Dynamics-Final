@@ -1,0 +1,1314 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     56007,       1306]
+NotebookOptionsPosition[     55421,       1288]
+NotebookOutlinePosition[     55817,       1304]
+CellTagsIndexPosition[     55774,       1301]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DampingAndFreq", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"kn", ",", "cn", ",", "mn"}], "}"}], "\[Function]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"cn", "/", 
+       RowBox[{"(", 
+        RowBox[{"2", 
+         RowBox[{"\[Sqrt]", 
+          RowBox[{"(", 
+           RowBox[{"mn", " ", "kn"}], ")"}]}]}], ")"}]}], ",", 
+      RowBox[{"\[Sqrt]", 
+       RowBox[{"(", 
+        RowBox[{"kn", "/", "mn"}], ")"}]}]}], "}"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SpringMassDamper", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[Zeta]n", ",", "\[Omega]n"}], "}"}], "\[Function]", 
+    RowBox[{"Hn", "\[Function]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Xdd", ",", "\[Theta]dd", ",", "\[Theta]"}], "}"}], 
+      "\[Function]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"xn", ",", "xndot"}], "}"}], "\[Function]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"xndot", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "2"}], "\[Zeta]n", " ", "\[Omega]n", " ", "xndot"}], 
+          "-", 
+          RowBox[{
+           RowBox[{"\[Omega]n", "^", "2"}], " ", "xn"}], "-", "Xdd", "-", 
+          RowBox[{"Hn", " ", "\[Theta]dd"}], "+", 
+          RowBox[{"9.81", "\[Theta]"}]}]}], "}"}]}]}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CofMassLateralDisplacement", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"xVec", ",", "R"}], "}"}], "\[Function]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "6"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Total", "[", "xVec", "]"}], "+", 
+        RowBox[{"3", "R"}]}], ")"}]}], "-", 
+     RowBox[{"0.5", "R"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ActualAngularAccelerationUpdate", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "M", ",", "m0", ",", "H0", ",", "Ht", ",", "mVec", ",", "xVec", ",", 
+      "xddVec", ",", "hVec", ",", "\[Tau]"}], "}"}], "\[Function]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"mVec", "*", "hVec", 
+         RowBox[{"(", "xddVec", ")"}]}], "]"}], "-", 
+       RowBox[{"9.81", 
+        RowBox[{"(", 
+         RowBox[{"mVec", ".", "xVec"}], ")"}]}], "+", "M"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"\[Tau]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"m0", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Ht", "^", "2"}], "+", 
+            RowBox[{"H0", "^", "2"}]}], ")"}]}], "+", 
+         RowBox[{"Total", "[", 
+          RowBox[{"mVec", "*", 
+           RowBox[{"hVec", "^", "2"}]}], "]"}]}], ")"}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nonLinear1", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "y0", ",", "y1"}], 
+     "}"}], "\[Function]", 
+    RowBox[{"x", "\[Function]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"x", "/", "\[Alpha]"}], ")"}], "^", 
+       RowBox[{"(", 
+        RowBox[{"2", " ", "\[Beta]"}], ")"}]}], "+", "y0"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nonLinear2", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "y0", ",", "y1"}], 
+     "}"}], "\[Function]", 
+    RowBox[{"x", "\[Function]", 
+     RowBox[{
+      RowBox[{"Log", "[", 
+       RowBox[{"\[Gamma]", "+", 
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"E", "^", 
+          RowBox[{"(", 
+           RowBox[{"\[Beta]", " ", 
+            RowBox[{"x", "^", "2"}]}], ")"}]}]}]}], "]"}], "-", 
+      RowBox[{"Log", "[", 
+       RowBox[{"\[Gamma]", "+", "\[Alpha]"}], "]"}], "+", "y0"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nonLinear3", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "y0", ",", "y1"}], 
+     "}"}], "\[Function]", 
+    RowBox[{"x", "\[Function]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"y1", "-", "y0"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"\[Alpha]", " ", 
+             RowBox[{"E", "^", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "\[Beta]"}], 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"Abs", "[", "x", "]"}], "-", "\[Gamma]"}], ")"}]}], 
+               ")"}]}]}]}], ")"}], "^", 
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"\[Alpha]", " ", 
+             RowBox[{"E", "^", 
+              RowBox[{"(", 
+               RowBox[{"\[Beta]", " ", "\[Gamma]"}], ")"}]}]}]}], ")"}], "^", 
+          
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}]}]}], ")"}]}], "+", "y0"}]}]}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.942686659400792*^9, 3.9426866607567587`*^9}, {
+  3.9426866929795713`*^9, 3.942686693502228*^9}, {3.942686744655501*^9, 
+  3.942686753281199*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[Zeta]n", ",", "\[Omega]n", ",", "trajectory", ",", "xddVec", ",", 
+       "xVec", ",", "hVec", ",", "mVec"}], "}"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{
+      RowBox[{"StiffnessEquation", "=", 
+       RowBox[{
+        RowBox[{"nonLinear3", "[", 
+         RowBox[{
+         "\[Alpha]x", ",", "\[Beta]x", ",", "\[Gamma]x", ",", "y0x", ",", 
+          "y1x"}], "]"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"DampingEquation", "=", 
+       RowBox[{
+        RowBox[{"nonLinear2", "[", 
+         RowBox[{
+         "\[Alpha]xd", ",", "\[Beta]xd", ",", "\[Gamma]xd", ",", "y0xd", ",", 
+          "y1xd"}], "]"}], "[", "xd", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[Zeta]n", ",", "\[Omega]n"}], "}"}], "=", 
+       RowBox[{"DampingAndFreq", "[", 
+        RowBox[{"StiffnessEquation", ",", "DampingEquation", ",", "mn"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"SystemParamsSet", "=", 
+       RowBox[{"SpringMassDamper", "[", 
+        RowBox[{"\[Zeta]n", ",", "\[Omega]n"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"system1", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"SystemParamsSet", "[", "5", "]"}], "[", 
+           RowBox[{"Xdd", ",", 
+            RowBox[{
+             RowBox[{"\[Theta]", "''"}], "[", "t", "]"}], ",", 
+            RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}], "[", 
+          RowBox[{
+           RowBox[{"x1", "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x1", "'"}], "[", "t", "]"}]}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"x", "->", 
+           RowBox[{"x1", "[", "t", "]"}]}], ",", 
+          RowBox[{"xd", "->", 
+           RowBox[{
+            RowBox[{"x1", "'"}], "[", "t", "]"}]}]}], "}"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"system2", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"SystemParamsSet", "[", "3", "]"}], "[", 
+           RowBox[{"Xdd", ",", 
+            RowBox[{
+             RowBox[{"\[Theta]", "''"}], "[", "t", "]"}], ",", 
+            RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}], "[", 
+          RowBox[{
+           RowBox[{"x2", "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x2", "'"}], "[", "t", "]"}]}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"x", "->", 
+           RowBox[{"x2", "[", "t", "]"}]}], ",", 
+          RowBox[{"xd", "->", 
+           RowBox[{
+            RowBox[{"x2", "'"}], "[", "t", "]"}]}]}], "}"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"system3", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"SystemParamsSet", "[", "1", "]"}], "[", 
+           RowBox[{"Xdd", ",", 
+            RowBox[{
+             RowBox[{"\[Theta]", "''"}], "[", "t", "]"}], ",", 
+            RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}], "[", 
+          RowBox[{
+           RowBox[{"x3", "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x3", "'"}], "[", "t", "]"}]}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"x", "->", 
+           RowBox[{"x3", "[", "t", "]"}]}], ",", 
+          RowBox[{"xd", "->", 
+           RowBox[{
+            RowBox[{"x3", "'"}], "[", "t", "]"}]}]}], "}"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"hVec", "=", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "3", ",", "1"}], "}"}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"mVec", "=", 
+       RowBox[{"{", 
+        RowBox[{"mn", ",", "mn", ",", "mn"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"angular", "=", 
+       RowBox[{"ActualAngularAccelerationUpdate", "[", 
+        RowBox[{"M", ",", 
+         RowBox[{"3", "mn"}], ",", "3", ",", "6", ",", "mVec", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"x1", "[", "t", "]"}], ",", 
+           RowBox[{"x2", "[", "t", "]"}], ",", 
+           RowBox[{"x3", "[", "t", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"x1", "''"}], "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x2", "''"}], "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x3", "''"}], "[", "t", "]"}]}], "}"}], ",", "hVec", ",", 
+         "\[Tau]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"collisionEquation", "=", 
+       RowBox[{"x", "\[Function]", 
+        RowBox[{
+         RowBox[{"-", "\[Lambda]"}], " ", "x"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"R", "=", "2.99"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"trajectory", "=", 
+       RowBox[{"Quiet", "@", 
+        RowBox[{"NDSolve", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"x1", "'"}], "[", "t", "]"}], "==", 
+             RowBox[{"x1dot", "[", "t", "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x2", "'"}], "[", "t", "]"}], "==", 
+             RowBox[{"x2dot", "[", "t", "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x3", "'"}], "[", "t", "]"}], "==", 
+             RowBox[{"x3dot", "[", "t", "]"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x1", "''"}], "[", "t", "]"}], "==", "system1"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x2", "''"}], "[", "t", "]"}], "==", "system2"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x3", "''"}], "[", "t", "]"}], "==", "system3"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"x1", "[", "0", "]"}], "==", "x1Var"}], ",", 
+            RowBox[{
+             RowBox[{"x1dot", "[", "0", "]"}], "==", "x1dVar"}], ",", 
+            RowBox[{
+             RowBox[{"x2", "[", "0", "]"}], "==", "x2Var"}], ",", 
+            RowBox[{
+             RowBox[{"x2dot", "[", "0", "]"}], "==", "x2dVar"}], ",", 
+            RowBox[{
+             RowBox[{"x3", "[", "0", "]"}], "==", "x3Var"}], ",", 
+            RowBox[{
+             RowBox[{"x3dot", "[", "0", "]"}], "==", "x3dVar"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"\[Theta]", "'''"}], "[", "t", "]"}], "==", "angular"}],
+             ",", 
+            RowBox[{
+             RowBox[{"\[Theta]", "[", "0", "]"}], "==", "\[Theta]Var"}], ",", 
+            
+            RowBox[{
+             RowBox[{
+              RowBox[{"\[Theta]", "'"}], "[", "0", "]"}], "==", 
+             "\[Theta]dVar"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"\[Theta]", "''"}], "[", "0", "]"}], "==", 
+             "\[Theta]ddVar"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x1", "[", "t", "]"}], ">=", "R"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x1dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x1dot", "[", "t", "]"}], ",", 
+                   RowBox[{"-", "1"}]}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x1", "[", "t", "]"}], "->", "R"}]}], "}"}]}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x2", "[", "t", "]"}], ">=", "R"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x2dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x2dot", "[", "t", "]"}], ",", 
+                   RowBox[{"-", "1"}]}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x2", "[", "t", "]"}], "->", "R"}]}], "}"}]}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x3", "[", "t", "]"}], ">=", "R"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x3dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x3dot", "[", "t", "]"}], ",", 
+                   RowBox[{"-", "1"}]}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x3", "[", "t", "]"}], "->", "R"}]}], "}"}]}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x1", "[", "t", "]"}], "<=", 
+               RowBox[{"-", "R"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x1dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x1dot", "[", "t", "]"}], ",", "1"}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x1", "[", "t", "]"}], "->", 
+                 RowBox[{"-", "R"}]}]}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x2", "[", "t", "]"}], "<=", 
+               RowBox[{"-", "R"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x2dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x2dot", "[", "t", "]"}], ",", "1"}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x2", "[", "t", "]"}], "->", 
+                 RowBox[{"-", "R"}]}]}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"WhenEvent", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"x3", "[", "t", "]"}], "<=", 
+               RowBox[{"-", "R"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x3dot", "[", "t", "]"}], "\[Rule]", 
+                 RowBox[{"collisionEquation", "[", 
+                  RowBox[{
+                   RowBox[{"x3dot", "[", "t", "]"}], ",", "1"}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x3", "[", "t", "]"}], "->", 
+                 RowBox[{"-", "R"}]}]}], "}"}]}], "]"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+           "x1", ",", "x1dot", ",", "x2", ",", "x2dot", ",", "x3", ",", 
+            "x3dot", ",", "\[Theta]"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "tmax"}], "}"}]}], 
+         "\[IndentingNewLine]", "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"fluidMomentData", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"t", ",", "\[IndentingNewLine]", 
+           RowBox[{"FluidExertedMoment", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"3", "mn"}], ",", "3", ",", "6", ",", "\[Theta]dd", ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"mn", ",", "mn", ",", "mn"}], "}"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"x1", "[", "t", "]"}], ",", 
+                 RowBox[{"x2", "[", "t", "]"}], ",", 
+                 RowBox[{"x3", "[", "t", "]"}]}], "}"}], "/.", " ", 
+               "trajectory"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"a1", "[", "t", "]"}], ",", 
+                 RowBox[{"a2", "[", "t", "]"}], ",", 
+                 RowBox[{"a3", "[", "t", "]"}]}], "}"}], "/.", " ", 
+               "trajectory"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"5", ",", "3", ",", "1"}], "}"}]}], " ", "]"}]}], "}"}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax", ",", 
+           RowBox[{"tmax", "/", "100"}]}], "}"}]}], " ", 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"centreOfMassData", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"t", ",", "\[IndentingNewLine]", 
+           RowBox[{"CofMassLateralDisplacement", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Flatten", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"x1", "[", "t", "]"}], ",", 
+                 RowBox[{"x2", "[", "t", "]"}], ",", 
+                 RowBox[{"x3", "[", "t", "]"}]}], "}"}], "/.", " ", 
+               "trajectory"}], "]"}], ",", "R"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax", ",", 
+           RowBox[{"tmax", "/", "100"}]}], "}"}]}], " ", 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"DisplacementPlot", "=", 
+       RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"x1", "[", "t", "]"}], ",", 
+             RowBox[{"x2", "[", "t", "]"}], ",", 
+             RowBox[{"x3", "[", "t", "]"}]}], "}"}], "/.", " ", 
+           "trajectory"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Red", ",", "Blue", ",", "Green"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<x1[t]\>\"", ",", "\"\<x2[t]\>\"", ",", "\"\<x3[t]\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Time\>\"", ",", "\"\<Position (x)\>\""}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"VelocityPlot", "=", 
+       RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"x1dot", "[", "t", "]"}], ",", 
+             RowBox[{"x2dot", "[", "t", "]"}], ",", 
+             RowBox[{"x3dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+           "trajectory"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Red", ",", "Blue", ",", "Green"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<x1'[t]\>\"", ",", "\"\<x2'[t]\>\"", ",", "\"\<x3'[t]\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Time\>\"", ",", "\"\<Velocity (x')\>\""}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"AnglePlot", "=", 
+       RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"\[Theta]", "[", "t", "]"}], "/.", " ", "trajectory"}], 
+          "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Blue"}], "}"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"streamPlot", "=", 
+       RowBox[{"StreamPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"SystemParamsSet", "[", "5", "]"}], "[", 
+           RowBox[{"Xdd", ",", "\[Theta]dd", ",", "\[Theta]"}], "]"}], "[", 
+          RowBox[{"xn", ",", "xndot"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"xn", ",", 
+           RowBox[{"-", "R"}], ",", "R"}], "}"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"{", 
+          RowBox[{"xndot", ",", 
+           RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"StreamStyle", "->", 
+          RowBox[{"Arrowheads", "[", "0.02", "]"}]}]}], "\[IndentingNewLine]",
+         "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ParametricTrajectoryPlot", "=", 
+       RowBox[{"ParametricPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x1", "[", "t", "]"}], ",", 
+               RowBox[{"x1dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x2", "[", "t", "]"}], ",", 
+               RowBox[{"x2dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x3", "[", "t", "]"}], ",", 
+               RowBox[{"x3dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Red", ",", "Blue", ",", "Green"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<x1[t]\>\"", ",", "\"\<x2[t]\>\"", ",", "\"\<x3[t]\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<x\>\"", ",", "\"\<x'\>\""}], "}"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"combinedTrajectoryPlot", "=", 
+       RowBox[{"ParametricPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x1", "[", "t", "]"}], ",", 
+               RowBox[{"x1dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x2", "[", "t", "]"}], ",", 
+               RowBox[{"x2dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"x3", "[", "t", "]"}], ",", 
+               RowBox[{"x3dot", "[", "t", "]"}]}], "}"}], "/.", " ", 
+             "trajectory"}]}], " ", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Red", ",", "Blue", ",", "Green"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<x1\>\"", ",", "\"\<x2\>\"", ",", "\"\<x3\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "R"}], ",", "R"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "}"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"AspectRatio", "->", "1"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"momentPlot", "=", 
+       RowBox[{"ListPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{"fluidMomentData", ",", "\[IndentingNewLine]", 
+         RowBox[{"Joined", "->", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", "Thick"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Time\>\"", ",", "\"\<Fluid Moment\>\""}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"CofMassPlot", "=", 
+       RowBox[{"ListPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{"centreOfMassData", ",", "\[IndentingNewLine]", 
+         RowBox[{"Joined", "->", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "->", "Thick"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Time\>\"", ",", "\"\<Centre of Mass Location\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"StreamPlotXandXd", "=", 
+       RowBox[{"StreamPlot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"SystemParamsSet", "[", "5", "]"}], "[", 
+           RowBox[{"Xdd", ",", "\[Theta]ddVar", ",", "\[Theta]Var"}], "]"}], 
+          "[", 
+          RowBox[{"x", ",", "xd"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{"-", "R"}], ",", "R"}], "}"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"{", 
+          RowBox[{"xd", ",", 
+           RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"StreamStyle", "->", 
+          RowBox[{"Arrowheads", "[", "0.02", "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"StreamPoints", "->", "Fine"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"FrameLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<x (position)\>\"", ",", "\"\<v (velocity)\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"GraphicsRow", "[", 
+       RowBox[{"{", 
+        RowBox[{"DisplacementPlot", ",", "StreamPlotXandXd"}], "}"}], 
+       "]"}]}]}], "\n", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"kn", ",", "1", ",", "\"\<kn\>\""}], "}"}], ",", "0", ",", 
+     "100", ",", "0.1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"cn", ",", "10", ",", "\"\<cn\>\""}], "}"}], ",", "0", ",", 
+     "100", ",", "0.1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"mn", ",", "1", ",", "\"\<mn\>\""}], "}"}], ",", "0.1", ",", 
+     "5", ",", "0.1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x1Var", ",", "0", ",", "\"\<x1\>\""}], "}"}], ",", 
+     RowBox[{"-", "R"}], ",", "R", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x1dVar", ",", "0", ",", "\"\<x1dot\>\""}], "}"}], ",", 
+     RowBox[{"-", "10"}], ",", "10", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x2Var", ",", "0", ",", "\"\<x2\>\""}], "}"}], ",", 
+     RowBox[{"-", "R"}], ",", "R", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x2dVar", ",", "0", ",", "\"\<x2dot\>\""}], "}"}], ",", 
+     RowBox[{"-", "10"}], ",", "10", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x3Var", ",", "0", ",", "\"\<x3\>\""}], "}"}], ",", 
+     RowBox[{"-", "R"}], ",", "R", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x3dVar", ",", "0", ",", "\"\<x3dot\>\""}], "}"}], ",", 
+     RowBox[{"-", "10"}], ",", "10", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"tmax", ",", "10", ",", "\"\<Time Range\>\""}], "}"}], ",", "1",
+      ",", "100", ",", "1"}], "}"}], " ", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Xdd", ",", "0", ",", "\"\<Xdd\>\""}], "}"}], ",", 
+     RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]Var", ",", "0", ",", "\"\<\[Theta]\>\""}], "}"}], ",", 
+     
+     RowBox[{"-", "0.5"}], ",", "0.5", ",", "0.05"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]dVar", ",", "0", ",", "\"\<\[Theta]d\>\""}], "}"}], 
+     ",", 
+     RowBox[{"-", "0.5"}], ",", "0.5", ",", "0.05"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]ddVar", ",", "0", ",", "\"\<\[Theta]dd\>\""}], "}"}], 
+     ",", 
+     RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]", ",", "0.1", ",", "\"\<\[Lambda]\>\""}], "}"}], ",",
+      "0", ",", "1", ",", "0.05"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M", ",", "0", ",", "\"\<M\>\""}], "}"}], ",", "0", ",", "10", 
+     ",", "0.05"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "10000", ",", "\"\<\[Tau]\>\""}], "}"}], ",", 
+     "0", ",", "50000", ",", "100"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]x", ",", "1", ",", "\"\<\[Alpha]_x\>\""}], "}"}], ",", 
+     "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Beta]x", ",", "5", ",", "\"\<\[Beta]_x\>\""}], "}"}], ",", 
+     "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]x", ",", "2", ",", "\"\<\[Gamma]_x\>\""}], "}"}], ",", 
+     "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y0x", ",", "1", ",", "\"\<y0_x\>\""}], "}"}], ",", "0", ",", 
+     "1", ",", "0.05"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y1x", ",", "10", ",", "\"\<y1_x\>\""}], "}"}], ",", "0", ",", 
+     "20", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]xd", ",", "1", ",", "\"\<\[Alpha]_x'\>\""}], "}"}], 
+     ",", "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Beta]xd", ",", "5", ",", "\"\<\[Beta]_x'\>\""}], "}"}], ",", 
+     "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]xd", ",", "2", ",", "\"\<\[Gamma]_x'\>\""}], "}"}], 
+     ",", "0", ",", "10", ",", "0.5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y0xd", ",", "1", ",", "\"\<y0_x'\>\""}], "}"}], ",", "0", ",", 
+     "1", ",", "0.05"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y1xd", ",", "10", ",", "\"\<y1_x'\>\""}], "}"}], ",", "0", ",",
+      "20", ",", "0.5"}], "}"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.942687098099339*^9, 3.942687154970285*^9}, {
+  3.942687192074544*^9, 3.942687199815851*^9}, {3.9427327303514338`*^9, 
+  3.942732802411503*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cn$$ = 10, $CellContext`kn$$ = 
+    1, $CellContext`M$$ = 0, $CellContext`mn$$ = 1, $CellContext`tmax$$ = 
+    10, $CellContext`x1dVar$$ = 0, $CellContext`x1Var$$ = 
+    0, $CellContext`x2dVar$$ = 0, $CellContext`x2Var$$ = 
+    0, $CellContext`x3dVar$$ = 0, $CellContext`x3Var$$ = 
+    0, $CellContext`Xdd$$ = 0, $CellContext`y0x$$ = 0.2, $CellContext`y0xd$$ =
+     0.9500000000000001, $CellContext`y1x$$ = 20., $CellContext`y1xd$$ = 
+    10, $CellContext`\[Alpha]x$$ = 9.5, $CellContext`\[Alpha]xd$$ = 
+    1, $CellContext`\[Beta]x$$ = 0.5, $CellContext`\[Beta]xd$$ = 
+    5, $CellContext`\[Gamma]x$$ = 7.5, $CellContext`\[Gamma]xd$$ = 
+    8., $CellContext`\[Theta]ddVar$$ = 0, $CellContext`\[Theta]dVar$$ = 
+    0, $CellContext`\[Theta]Var$$ = 0, $CellContext`\[Lambda]$$ = 
+    0.1, $CellContext`\[Tau]$$ = 10000, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`kn$$], 1, "kn"}, 0, 100, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`cn$$], 10, "cn"}, 0, 100, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`mn$$], 1, "mn"}, 0.1, 5, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x1Var$$], 0, "x1"}, -2.99, 2.99, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x1dVar$$], 0, "x1dot"}, -10, 10, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x2Var$$], 0, "x2"}, -2.99, 2.99, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x2dVar$$], 0, "x2dot"}, -10, 10, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x3Var$$], 0, "x3"}, -2.99, 2.99, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`x3dVar$$], 0, "x3dot"}, -10, 10, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`tmax$$], 10, "Time Range"}, 1, 100, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`Xdd$$], 0, "Xdd"}, -5, 5, 0.1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]Var$$], 0, "\[Theta]"}, -0.5, 0.5, 0.05, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Theta]dVar$$], 0, "\[Theta]d"}, -0.5, 0.5, 0.05, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Theta]ddVar$$], 0, "\[Theta]dd"}, -5, 5, 0.1, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Lambda]$$], 0.1, "\[Lambda]"}, 0, 1, 0.05, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`M$$], 0, "M"}, 0, 10, 0.05, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Tau]$$], 10000, "\[Tau]"}, 0, 50000, 100, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Alpha]x$$], 1, "\[Alpha]_x"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Beta]x$$], 5, "\[Beta]_x"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Gamma]x$$], 2, "\[Gamma]_x"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`y0x$$], 1, "y0_x"}, 0, 1, 0.05, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`y1x$$], 10, "y1_x"}, 0, 20, 0.5, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Alpha]xd$$], 1, "\[Alpha]_x'"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Beta]xd$$], 5, "\[Beta]_x'"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Gamma]xd$$], 2, "\[Gamma]_x'"}, 0, 10, 0.5, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`y0xd$$], 1, "y0_x'"}, 0, 1, 0.05, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`y1xd$$], 10, "y1_x'"}, 0, 20, 0.5, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {
+    636.8, {185.77058919270837`, 191.50252278645837`}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cn$$ = 10, $CellContext`kn$$ = 
+        1, $CellContext`M$$ = 0, $CellContext`mn$$ = 1, $CellContext`tmax$$ = 
+        10, $CellContext`x1dVar$$ = 0, $CellContext`x1Var$$ = 
+        0, $CellContext`x2dVar$$ = 0, $CellContext`x2Var$$ = 
+        0, $CellContext`x3dVar$$ = 0, $CellContext`x3Var$$ = 
+        0, $CellContext`Xdd$$ = 0, $CellContext`y0x$$ = 
+        1, $CellContext`y0xd$$ = 1, $CellContext`y1x$$ = 
+        10, $CellContext`y1xd$$ = 10, $CellContext`\[Alpha]x$$ = 
+        1, $CellContext`\[Alpha]xd$$ = 1, $CellContext`\[Beta]x$$ = 
+        5, $CellContext`\[Beta]xd$$ = 5, $CellContext`\[Gamma]x$$ = 
+        2, $CellContext`\[Gamma]xd$$ = 2, $CellContext`\[Theta]ddVar$$ = 
+        0, $CellContext`\[Theta]dVar$$ = 0, $CellContext`\[Theta]Var$$ = 
+        0, $CellContext`\[Lambda]$$ = 0.1, $CellContext`\[Tau]$$ = 10000}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Module[{$CellContext`\[Zeta]n$, $CellContext`\[Omega]n$, \
+$CellContext`trajectory$, $CellContext`xddVec$, $CellContext`xVec$, \
+$CellContext`hVec$, $CellContext`mVec$}, $CellContext`StiffnessEquation = \
+$CellContext`nonLinear3[$CellContext`\[Alpha]x$$, $CellContext`\[Beta]x$$, \
+$CellContext`\[Gamma]x$$, $CellContext`y0x$$, \
+$CellContext`y1x$$][$CellContext`x]; $CellContext`DampingEquation = \
+$CellContext`nonLinear2[$CellContext`\[Alpha]xd$$, $CellContext`\[Beta]xd$$, \
+$CellContext`\[Gamma]xd$$, $CellContext`y0xd$$, \
+$CellContext`y1xd$$][$CellContext`xd]; {$CellContext`\[Zeta]n$, $CellContext`\
+\[Omega]n$} = $CellContext`DampingAndFreq[$CellContext`StiffnessEquation, \
+$CellContext`DampingEquation, $CellContext`mn$$]; \
+$CellContext`SystemParamsSet = $CellContext`SpringMassDamper[$CellContext`\
+\[Zeta]n$, $CellContext`\[Omega]n$]; $CellContext`system1 = ReplaceAll[
+           Part[
+            $CellContext`SystemParamsSet[5][$CellContext`Xdd$$, 
+             Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
+             $CellContext`\[Theta][$CellContext`t]][
+             $CellContext`x1[$CellContext`t], 
+             Derivative[1][$CellContext`x1][$CellContext`t]], 
+            2], {$CellContext`x -> $CellContext`x1[$CellContext`t], \
+$CellContext`xd -> 
+            Derivative[
+             1][$CellContext`x1][$CellContext`t]}]; $CellContext`system2 = 
+         ReplaceAll[
+           Part[
+            $CellContext`SystemParamsSet[3][$CellContext`Xdd$$, 
+             Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
+             $CellContext`\[Theta][$CellContext`t]][
+             $CellContext`x2[$CellContext`t], 
+             Derivative[1][$CellContext`x2][$CellContext`t]], 
+            2], {$CellContext`x -> $CellContext`x2[$CellContext`t], \
+$CellContext`xd -> 
+            Derivative[
+             1][$CellContext`x2][$CellContext`t]}]; $CellContext`system3 = 
+         ReplaceAll[
+           Part[
+            $CellContext`SystemParamsSet[1][$CellContext`Xdd$$, 
+             Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
+             $CellContext`\[Theta][$CellContext`t]][
+             $CellContext`x3[$CellContext`t], 
+             Derivative[1][$CellContext`x3][$CellContext`t]], 
+            2], {$CellContext`x -> $CellContext`x3[$CellContext`t], \
+$CellContext`xd -> 
+            Derivative[
+             1][$CellContext`x3][$CellContext`t]}]; $CellContext`hVec$ = {5, 
+          3, 1}; $CellContext`mVec$ = {$CellContext`mn$$, $CellContext`mn$$, \
+$CellContext`mn$$}; $CellContext`angular = \
+$CellContext`ActualAngularAccelerationUpdate[$CellContext`M$$, 
+           3 $CellContext`mn$$, 3, 6, $CellContext`mVec$, {
+            $CellContext`x1[$CellContext`t], 
+            $CellContext`x2[$CellContext`t], 
+            $CellContext`x3[$CellContext`t]}, {
+            Derivative[2][$CellContext`x1][$CellContext`t], 
+            Derivative[2][$CellContext`x2][$CellContext`t], 
+            Derivative[
+            2][$CellContext`x3][$CellContext`t]}, $CellContext`hVec$, \
+$CellContext`\[Tau]$$]; $CellContext`collisionEquation = 
+         Function[$CellContext`x$, (-$CellContext`\[Lambda]$$) \
+$CellContext`x$]; $CellContext`R = 2.99; $CellContext`trajectory$ = Quiet[
+           
+           NDSolve[{
+            Derivative[
+              1][$CellContext`x1][$CellContext`t] == \
+$CellContext`x1dot[$CellContext`t], 
+             Derivative[
+              1][$CellContext`x2][$CellContext`t] == \
+$CellContext`x2dot[$CellContext`t], 
+             Derivative[
+              1][$CellContext`x3][$CellContext`t] == \
+$CellContext`x3dot[$CellContext`t], 
+             Derivative[
+              2][$CellContext`x1][$CellContext`t] == $CellContext`system1, 
+             Derivative[
+              2][$CellContext`x2][$CellContext`t] == $CellContext`system2, 
+             Derivative[
+              2][$CellContext`x3][$CellContext`t] == $CellContext`system3, \
+$CellContext`x1[0] == $CellContext`x1Var$$, $CellContext`x1dot[
+              0] == $CellContext`x1dVar$$, $CellContext`x2[
+              0] == $CellContext`x2Var$$, $CellContext`x2dot[
+              0] == $CellContext`x2dVar$$, $CellContext`x3[
+              0] == $CellContext`x3Var$$, $CellContext`x3dot[
+              0] == $CellContext`x3dVar$$, 
+             Derivative[
+              3][$CellContext`\[Theta]][$CellContext`t] == \
+$CellContext`angular, $CellContext`\[Theta][0] == $CellContext`\[Theta]Var$$, 
+             Derivative[1][$CellContext`\[Theta]][
+              0] == $CellContext`\[Theta]dVar$$, 
+             Derivative[2][$CellContext`\[Theta]][
+              0] == $CellContext`\[Theta]ddVar$$, 
+             
+             WhenEvent[$CellContext`x1[$CellContext`t] >= $CellContext`R, \
+{$CellContext`x1dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x1dot[$CellContext`t], -1], \
+$CellContext`x1[$CellContext`t] -> $CellContext`R}], 
+             
+             WhenEvent[$CellContext`x2[$CellContext`t] >= $CellContext`R, \
+{$CellContext`x2dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x2dot[$CellContext`t], -1], \
+$CellContext`x2[$CellContext`t] -> $CellContext`R}], 
+             
+             WhenEvent[$CellContext`x3[$CellContext`t] >= $CellContext`R, \
+{$CellContext`x3dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x3dot[$CellContext`t], -1], \
+$CellContext`x3[$CellContext`t] -> $CellContext`R}], 
+             
+             WhenEvent[$CellContext`x1[$CellContext`t] <= -$CellContext`R, \
+{$CellContext`x1dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x1dot[$CellContext`t], 
+                 1], $CellContext`x1[$CellContext`t] -> -$CellContext`R}], 
+             
+             WhenEvent[$CellContext`x2[$CellContext`t] <= -$CellContext`R, \
+{$CellContext`x2dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x2dot[$CellContext`t], 
+                 1], $CellContext`x2[$CellContext`t] -> -$CellContext`R}], 
+             
+             WhenEvent[$CellContext`x3[$CellContext`t] <= -$CellContext`R, \
+{$CellContext`x3dot[$CellContext`t] -> $CellContext`collisionEquation[
+                 $CellContext`x3dot[$CellContext`t], 
+                 1], $CellContext`x3[$CellContext`t] -> -$CellContext`R}]}, \
+{$CellContext`x1, $CellContext`x1dot, $CellContext`x2, $CellContext`x2dot, \
+$CellContext`x3, $CellContext`x3dot, $CellContext`\[Theta]}, {$CellContext`t, 
+             0, $CellContext`tmax$$}]]; $CellContext`fluidMomentData = 
+         Table[{$CellContext`t, 
+            $CellContext`FluidExertedMoment[
+            3 $CellContext`mn$$, 3, 
+             6, $CellContext`\[Theta]dd, {$CellContext`mn$$, \
+$CellContext`mn$$, $CellContext`mn$$}, 
+             Flatten[
+              ReplaceAll[{
+                $CellContext`x1[$CellContext`t], 
+                $CellContext`x2[$CellContext`t], 
+                $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], 
+             
+             Flatten[
+              ReplaceAll[{
+                $CellContext`a1[$CellContext`t], 
+                $CellContext`a2[$CellContext`t], 
+                $CellContext`a3[$CellContext`t]}, $CellContext`trajectory$]], \
+{5, 3, 1}]}, {$CellContext`t, 0, $CellContext`tmax$$, $CellContext`tmax$$/
+            100}]; $CellContext`centreOfMassData = Table[{$CellContext`t, 
+            $CellContext`CofMassLateralDisplacement[
+             Flatten[
+              ReplaceAll[{
+                $CellContext`x1[$CellContext`t], 
+                $CellContext`x2[$CellContext`t], 
+                $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], \
+$CellContext`R]}, {$CellContext`t, 
+            0, $CellContext`tmax$$, $CellContext`tmax$$/
+            100}]; $CellContext`DisplacementPlot = Plot[
+           Evaluate[
+            ReplaceAll[{
+              $CellContext`x1[$CellContext`t], 
+              $CellContext`x2[$CellContext`t], 
+              $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], \
+{$CellContext`t, 0, $CellContext`tmax$$}, 
+           PlotStyle -> {Thick, Red, Blue, Green}, 
+           PlotLegends -> {"x1[t]", "x2[t]", "x3[t]"}, 
+           AxesLabel -> {"Time", "Position (x)"}, PlotRange -> 
+           All]; $CellContext`VelocityPlot = Plot[
+           Evaluate[
+            ReplaceAll[{
+              $CellContext`x1dot[$CellContext`t], 
+              $CellContext`x2dot[$CellContext`t], 
+              $CellContext`x3dot[$CellContext`t]}, \
+$CellContext`trajectory$]], {$CellContext`t, 0, $CellContext`tmax$$}, 
+           PlotStyle -> {Thick, Red, Blue, Green}, 
+           PlotLegends -> {"x1'[t]", "x2'[t]", "x3'[t]"}, 
+           AxesLabel -> {"Time", "Velocity (x')"}, PlotRange -> 
+           All]; $CellContext`AnglePlot = Plot[
+           Evaluate[
+            ReplaceAll[
+             $CellContext`\[Theta][$CellContext`t], \
+$CellContext`trajectory$]], {$CellContext`t, 0, $CellContext`tmax$$}, 
+           PlotStyle -> {Thick, Blue}, PlotRange -> 
+           All]; $CellContext`streamPlot = StreamPlot[
+           $CellContext`SystemParamsSet[
+           5][$CellContext`Xdd$$, $CellContext`\[Theta]dd, $CellContext`\
+\[Theta]][$CellContext`xn, $CellContext`xndot], {$CellContext`xn, \
+-$CellContext`R, $CellContext`R}, {$CellContext`xndot, -5, 5}, StreamStyle -> 
+           Arrowheads[0.02]]; $CellContext`ParametricTrajectoryPlot = 
+         ParametricPlot[
+           Evaluate[{
+             ReplaceAll[{
+               $CellContext`x1[$CellContext`t], 
+               $CellContext`x1dot[$CellContext`t]}, $CellContext`trajectory$], 
+             ReplaceAll[{
+               $CellContext`x2[$CellContext`t], 
+               $CellContext`x2dot[$CellContext`t]}, $CellContext`trajectory$], 
+             ReplaceAll[{
+               $CellContext`x3[$CellContext`t], 
+               $CellContext`x3dot[$CellContext`t]}, \
+$CellContext`trajectory$]}], {$CellContext`t, 0, $CellContext`tmax$$}, 
+           PlotStyle -> {Thick, Red, Blue, Green}, 
+           PlotLegends -> {"x1[t]", "x2[t]", "x3[t]"}, 
+           AxesLabel -> {"x", "x'"}, PlotRange -> 
+           All]; $CellContext`combinedTrajectoryPlot = ParametricPlot[
+           Evaluate[{
+             ReplaceAll[{
+               $CellContext`x1[$CellContext`t], 
+               $CellContext`x1dot[$CellContext`t]}, $CellContext`trajectory$], 
+             ReplaceAll[{
+               $CellContext`x2[$CellContext`t], 
+               $CellContext`x2dot[$CellContext`t]}, $CellContext`trajectory$], 
+             ReplaceAll[{
+               $CellContext`x3[$CellContext`t], 
+               $CellContext`x3dot[$CellContext`t]}, \
+$CellContext`trajectory$]}], {$CellContext`t, 0, $CellContext`tmax$$}, 
+           PlotStyle -> {Thick, Red, Blue, Green}, 
+           PlotLegends -> {"x1", "x2", "x3"}, 
+           PlotRange -> {{-$CellContext`R, $CellContext`R}, {-10, 10}}, 
+           AspectRatio -> 1]; $CellContext`momentPlot = 
+         ListPlot[$CellContext`fluidMomentData, Joined -> True, PlotStyle -> 
+           Thick, AxesLabel -> {"Time", "Fluid Moment"}, PlotRange -> 
+           All]; $CellContext`CofMassPlot = 
+         ListPlot[$CellContext`centreOfMassData, Joined -> True, PlotStyle -> 
+           Thick, AxesLabel -> {"Time", "Centre of Mass Location"}, PlotRange -> 
+           All]; $CellContext`StreamPlotXandXd = StreamPlot[
+           $CellContext`SystemParamsSet[
+           5][$CellContext`Xdd$$, $CellContext`\[Theta]ddVar$$, $CellContext`\
+\[Theta]Var$$][$CellContext`x, $CellContext`xd], {$CellContext`x, \
+-$CellContext`R, $CellContext`R}, {$CellContext`xd, -5, 5}, StreamStyle -> 
+           Arrowheads[0.02], StreamPoints -> Fine, 
+           FrameLabel -> {"x (position)", "v (velocity)"}, PlotRange -> All]; 
+        GraphicsRow[{$CellContext`DisplacementPlot, \
+$CellContext`StreamPlotXandXd}]], 
+      "Specifications" :> {{{$CellContext`kn$$, 1, "kn"}, 0, 100, 
+         0.1}, {{$CellContext`cn$$, 10, "cn"}, 0, 100, 
+         0.1}, {{$CellContext`mn$$, 1, "mn"}, 0.1, 5, 
+         0.1}, {{$CellContext`x1Var$$, 0, "x1"}, -2.99, 2.99, 
+         0.1}, {{$CellContext`x1dVar$$, 0, "x1dot"}, -10, 10, 
+         0.1}, {{$CellContext`x2Var$$, 0, "x2"}, -2.99, 2.99, 
+         0.1}, {{$CellContext`x2dVar$$, 0, "x2dot"}, -10, 10, 
+         0.1}, {{$CellContext`x3Var$$, 0, "x3"}, -2.99, 2.99, 
+         0.1}, {{$CellContext`x3dVar$$, 0, "x3dot"}, -10, 10, 
+         0.1}, {{$CellContext`tmax$$, 10, "Time Range"}, 1, 100, 
+         1}, {{$CellContext`Xdd$$, 0, "Xdd"}, -5, 5, 
+         0.1}, {{$CellContext`\[Theta]Var$$, 0, "\[Theta]"}, -0.5, 0.5, 
+         0.05}, {{$CellContext`\[Theta]dVar$$, 0, "\[Theta]d"}, -0.5, 0.5, 
+         0.05}, {{$CellContext`\[Theta]ddVar$$, 0, "\[Theta]dd"}, -5, 5, 
+         0.1}, {{$CellContext`\[Lambda]$$, 0.1, "\[Lambda]"}, 0, 1, 
+         0.05}, {{$CellContext`M$$, 0, "M"}, 0, 10, 
+         0.05}, {{$CellContext`\[Tau]$$, 10000, "\[Tau]"}, 0, 50000, 
+         100}, {{$CellContext`\[Alpha]x$$, 1, "\[Alpha]_x"}, 0, 10, 
+         0.5}, {{$CellContext`\[Beta]x$$, 5, "\[Beta]_x"}, 0, 10, 
+         0.5}, {{$CellContext`\[Gamma]x$$, 2, "\[Gamma]_x"}, 0, 10, 
+         0.5}, {{$CellContext`y0x$$, 1, "y0_x"}, 0, 1, 
+         0.05}, {{$CellContext`y1x$$, 10, "y1_x"}, 0, 20, 
+         0.5}, {{$CellContext`\[Alpha]xd$$, 1, "\[Alpha]_x'"}, 0, 10, 
+         0.5}, {{$CellContext`\[Beta]xd$$, 5, "\[Beta]_x'"}, 0, 10, 
+         0.5}, {{$CellContext`\[Gamma]xd$$, 2, "\[Gamma]_x'"}, 0, 10, 
+         0.5}, {{$CellContext`y0xd$$, 1, "y0_x'"}, 0, 1, 
+         0.05}, {{$CellContext`y1xd$$, 10, "y1_x'"}, 0, 20, 0.5}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      948.8347070312499, {372.20445861816427`, 377.93639221191427`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.9426871372898903`*^9, 3.942687155807537*^9}, {
+   3.942687201081012*^9, 3.942687210505204*^9}, 3.942732810038637*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"e8b71241-bdfb-41f0-822d-251736ec825d"]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{316, Automatic}, {Automatic, 50}},
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"455b58b2-ff82-425d-b945-eb2c06a76dd3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 5265, 162, 194, "Input",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
+Cell[CellGroupData[{
+Cell[5844, 186, 29749, 732, 2970, "Input",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+Cell[35596, 920, 19809, 365, 786, "Output",ExpressionUUID->"e8b71241-bdfb-41f0-822d-251736ec825d"]
+}, Open  ]]
+}
+]
+*)
+

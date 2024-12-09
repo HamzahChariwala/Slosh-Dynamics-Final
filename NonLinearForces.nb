@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     57998,       1351]
-NotebookOptionsPosition[     57412,       1333]
-NotebookOutlinePosition[     57808,       1349]
-CellTagsIndexPosition[     57765,       1346]
+NotebookDataLength[     58620,       1363]
+NotebookOptionsPosition[     58034,       1345]
+NotebookOutlinePosition[     58430,       1361]
+CellTagsIndexPosition[     58387,       1358]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -768,6 +768,11 @@ Cell[BoxData[
           RowBox[{"x", ",", 
            RowBox[{"-", "R"}], ",", "R"}], "}"}], ",", "\[IndentingNewLine]", 
          
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Displacement\>\"", ",", "\"\<Stiffness Coefficient\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
          RowBox[{"PlotRange", "->", 
           RowBox[{"{", 
            RowBox[{
@@ -784,6 +789,10 @@ Cell[BoxData[
           RowBox[{"xd", ",", 
            RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
          "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Velocity\>\"", ",", "\"\<Damping Coefficient\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
          RowBox[{"PlotRange", "->", 
           RowBox[{"{", 
            RowBox[{
@@ -950,8 +959,9 @@ Cell[BoxData[
   3.942732802411503*^9}, {3.942733079761807*^9, 3.942733151222995*^9}, {
   3.9427331819510117`*^9, 3.942733257478599*^9}, {3.9427333516700897`*^9, 
   3.942733450815612*^9}, {3.942733565539568*^9, 3.942733565824518*^9}, {
-  3.9427336043071136`*^9, 3.942733604868971*^9}},
- CellLabel->"In[36]:=",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+  3.9427336043071136`*^9, 3.942733604868971*^9}, {3.942733687154359*^9, 
+  3.9427337679912148`*^9}},
+ CellLabel->"In[39]:=",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
 
 Cell[BoxData[
  TagBox[
@@ -962,10 +972,10 @@ Cell[BoxData[
     0, $CellContext`x2dVar$$ = 0, $CellContext`x2Var$$ = 
     0, $CellContext`x3dVar$$ = 0, $CellContext`x3Var$$ = 
     0, $CellContext`Xdd$$ = 0, $CellContext`y0x$$ = 1, $CellContext`y0xd$$ = 
-    1., $CellContext`y1x$$ = 10, $CellContext`y1xd$$ = 
+    1, $CellContext`y1x$$ = 10, $CellContext`y1xd$$ = 
     10, $CellContext`\[Alpha]x$$ = 1, $CellContext`\[Alpha]xd$$ = 
-    0.2, $CellContext`\[Beta]x$$ = 5, $CellContext`\[Beta]xd$$ = 
-    0.2, $CellContext`\[Gamma]x$$ = 2, $CellContext`\[Gamma]xd$$ = 
+    1, $CellContext`\[Beta]x$$ = 5, $CellContext`\[Beta]xd$$ = 
+    5, $CellContext`\[Gamma]x$$ = 2, $CellContext`\[Gamma]xd$$ = 
     2, $CellContext`\[Theta]ddVar$$ = 0, $CellContext`\[Theta]dVar$$ = 
     0, $CellContext`\[Theta]Var$$ = 0, $CellContext`\[Lambda]$$ = 
     0.1, $CellContext`\[Tau]$$ = 10000, Typeset`show$$ = True, 
@@ -1277,9 +1287,11 @@ $CellContext`trajectory$]}], {$CellContext`t, 0, $CellContext`tmax$$},
            All]; $CellContext`StiffnessPlot = 
          Plot[$CellContext`StiffnessEquation, {$CellContext`x, \
 -$CellContext`R, $CellContext`R}, 
+           AxesLabel -> {"Displacement", "Stiffness Coefficient"}, 
            PlotRange -> {{-$CellContext`R, $CellContext`R}, {0, 
              20}}]; $CellContext`DampingPlot = 
          Plot[$CellContext`DampingEquation, {$CellContext`xd, -10, 10}, 
+           AxesLabel -> {"Velocity", "Damping Coefficient"}, 
            PlotRange -> {{-10, 10}, {0, 20}}]; 
         GraphicsRow[{$CellContext`DampingPlot, \
 $CellContext`StreamPlotXandXd}]], 
@@ -1312,7 +1324,7 @@ $CellContext`StreamPlotXandXd}]],
          0.05}, {{$CellContext`y1xd$$, 10, "y1_x'"}, 0, 20, 0.5}}, 
       "Options" :> {}, "DefaultOptions" :> {}],
      ImageSizeCache->{
-      952.0347070312499, {396.6444586181642, 402.3763922119142}},
+      952.0347070312499, {372.20445861816427`, 377.93639221191427`}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1327,8 +1339,8 @@ $CellContext`StreamPlotXandXd}]],
    3.942687201081012*^9, 3.942687210505204*^9}, 3.942732810038637*^9, {
    3.942733153527129*^9, 3.9427332589389133`*^9}, {3.942733434610128*^9, 
    3.942733451876275*^9}, 3.9427334993642797`*^9, {3.942733570756659*^9, 
-   3.942733610146544*^9}},
- CellLabel->"Out[36]=",ExpressionUUID->"eddd0cba-d176-4217-b616-7d954006bc71"]
+   3.942733610146544*^9}, {3.9427337264664392`*^9, 3.942733769086967*^9}},
+ CellLabel->"Out[39]=",ExpressionUUID->"7044c324-f0a2-43e1-9903-9c64568b7075"]
 }, Open  ]]
 },
 WindowSize->{Full, Full},
@@ -1350,8 +1362,8 @@ CellTagsIndex->{}
 Notebook[{
 Cell[554, 20, 5265, 162, 194, "Input",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
 Cell[CellGroupData[{
-Cell[5844, 186, 31217, 767, 3134, "Input",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
-Cell[37064, 955, 20332, 375, 835, "Output",ExpressionUUID->"eddd0cba-d176-4217-b616-7d954006bc71"]
+Cell[5844, 186, 31662, 777, 3174, "Input",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+Cell[37509, 965, 20509, 377, 786, "Output",ExpressionUUID->"7044c324-f0a2-43e1-9903-9c64568b7075"]
 }, Open  ]]
 }
 ]

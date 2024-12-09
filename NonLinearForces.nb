@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     58620,       1363]
-NotebookOptionsPosition[     58034,       1345]
-NotebookOutlinePosition[     58430,       1361]
-CellTagsIndexPosition[     58387,       1358]
+NotebookDataLength[     58297,       1349]
+NotebookOptionsPosition[     57711,       1331]
+NotebookOutlinePosition[     58107,       1347]
+CellTagsIndexPosition[     58064,       1344]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -113,21 +113,6 @@ Cell[BoxData[{
      "}"}], "\[Function]", 
     RowBox[{"x", "\[Function]", 
      RowBox[{
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"x", "/", "\[Alpha]"}], ")"}], "^", 
-       RowBox[{"(", 
-        RowBox[{"2", " ", "\[Beta]"}], ")"}]}], "+", "y0"}]}]}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"nonLinear2", "=", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-     "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "y0", ",", "y1"}], 
-     "}"}], "\[Function]", 
-    RowBox[{"x", "\[Function]", 
-     RowBox[{
       RowBox[{"Log", "[", 
        RowBox[{"\[Gamma]", "+", 
         RowBox[{"\[Alpha]", " ", 
@@ -139,7 +124,7 @@ Cell[BoxData[{
        RowBox[{"\[Gamma]", "+", "\[Alpha]"}], "]"}], "+", "y0"}]}]}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"nonLinear3", "=", 
+  RowBox[{"nonLinear2", "=", 
    RowBox[{
     RowBox[{"{", 
      RowBox[{
@@ -179,8 +164,8 @@ Cell[BoxData[{
   ";"}]}], "Input",
  CellChangeTimes->{{3.942686659400792*^9, 3.9426866607567587`*^9}, {
   3.9426866929795713`*^9, 3.942686693502228*^9}, {3.942686744655501*^9, 
-  3.942686753281199*^9}},
- CellLabel->"In[18]:=",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
+  3.942686753281199*^9}, {3.9427337955561457`*^9, 3.942733803894187*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
 
 Cell[CellGroupData[{
 
@@ -197,13 +182,13 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"StiffnessEquation", "=", 
        RowBox[{
-        RowBox[{"nonLinear3", "[", 
+        RowBox[{"nonLinear2", "[", 
          RowBox[{
          "\[Alpha]x", ",", "\[Beta]x", ",", "\[Gamma]x", ",", "y0x", ",", 
           "y1x"}], "]"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"DampingEquation", "=", 
        RowBox[{
-        RowBox[{"nonLinear2", "[", 
+        RowBox[{"nonLinear1", "[", 
          RowBox[{
          "\[Alpha]xd", ",", "\[Beta]xd", ",", "\[Gamma]xd", ",", "y0xd", ",", 
           "y1xd"}], "]"}], "[", "xd", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -960,8 +945,8 @@ Cell[BoxData[
   3.9427331819510117`*^9, 3.942733257478599*^9}, {3.9427333516700897`*^9, 
   3.942733450815612*^9}, {3.942733565539568*^9, 3.942733565824518*^9}, {
   3.9427336043071136`*^9, 3.942733604868971*^9}, {3.942733687154359*^9, 
-  3.9427337679912148`*^9}},
- CellLabel->"In[39]:=",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+  3.9427337679912148`*^9}, {3.942733801856945*^9, 3.9427338057911873`*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
 
 Cell[BoxData[
  TagBox[
@@ -1064,10 +1049,10 @@ Cell[BoxData[
       Module[{$CellContext`\[Zeta]n$, $CellContext`\[Omega]n$, \
 $CellContext`trajectory$, $CellContext`xddVec$, $CellContext`xVec$, \
 $CellContext`hVec$, $CellContext`mVec$}, $CellContext`StiffnessEquation = \
-$CellContext`nonLinear3[$CellContext`\[Alpha]x$$, $CellContext`\[Beta]x$$, \
+$CellContext`nonLinear2[$CellContext`\[Alpha]x$$, $CellContext`\[Beta]x$$, \
 $CellContext`\[Gamma]x$$, $CellContext`y0x$$, \
 $CellContext`y1x$$][$CellContext`x]; $CellContext`DampingEquation = \
-$CellContext`nonLinear2[$CellContext`\[Alpha]xd$$, $CellContext`\[Beta]xd$$, \
+$CellContext`nonLinear1[$CellContext`\[Alpha]xd$$, $CellContext`\[Beta]xd$$, \
 $CellContext`\[Gamma]xd$$, $CellContext`y0xd$$, \
 $CellContext`y1xd$$][$CellContext`xd]; {$CellContext`\[Zeta]n$, $CellContext`\
 \[Omega]n$} = $CellContext`DampingAndFreq[$CellContext`StiffnessEquation, \
@@ -1339,8 +1324,9 @@ $CellContext`StreamPlotXandXd}]],
    3.942687201081012*^9, 3.942687210505204*^9}, 3.942732810038637*^9, {
    3.942733153527129*^9, 3.9427332589389133`*^9}, {3.942733434610128*^9, 
    3.942733451876275*^9}, 3.9427334993642797`*^9, {3.942733570756659*^9, 
-   3.942733610146544*^9}, {3.9427337264664392`*^9, 3.942733769086967*^9}},
- CellLabel->"Out[39]=",ExpressionUUID->"7044c324-f0a2-43e1-9903-9c64568b7075"]
+   3.942733610146544*^9}, {3.9427337264664392`*^9, 3.942733769086967*^9}, 
+   3.942733809519833*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"882a58eb-5821-4dd3-a006-77cae5b34b57"]
 }, Open  ]]
 },
 WindowSize->{Full, Full},
@@ -1360,10 +1346,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[554, 20, 5265, 162, 194, "Input",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
+Cell[554, 20, 4868, 147, 174, "Input",ExpressionUUID->"59aa3bc6-b7a0-43b3-90a1-38bb4c3e54db"],
 Cell[CellGroupData[{
-Cell[5844, 186, 31662, 777, 3174, "Input",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
-Cell[37509, 965, 20509, 377, 786, "Output",ExpressionUUID->"7044c324-f0a2-43e1-9903-9c64568b7075"]
+Cell[5447, 171, 31710, 777, 3174, "Input",ExpressionUUID->"0795a226-3a25-475b-b49f-3ead7c16e27c"],
+Cell[37160, 950, 20535, 378, 786, "Output",ExpressionUUID->"882a58eb-5821-4dd3-a006-77cae5b34b57"]
 }, Open  ]]
 }
 ]

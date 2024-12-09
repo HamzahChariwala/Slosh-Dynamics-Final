@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     60747,       1361]
-NotebookOptionsPosition[     59935,       1339]
-NotebookOutlinePosition[     60331,       1355]
-CellTagsIndexPosition[     60288,       1352]
+NotebookDataLength[     41721,        988]
+NotebookOptionsPosition[     41268,        973]
+NotebookOutlinePosition[     41664,        989]
+CellTagsIndexPosition[     41621,        986]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -207,9 +207,7 @@ Cell[BoxData[{
    3.942678389914597*^9, {3.942686034384182*^9, 3.942686041884461*^9}, {
    3.942686515536334*^9, 3.942686515792015*^9}, {3.9426866352623253`*^9, 
    3.942686643916363*^9}},
- CellLabel->"In[4]:=",ExpressionUUID->"4473ceab-523d-4ada-8961-c9f2acc74e6b"],
-
-Cell[CellGroupData[{
+ CellLabel->"In[1]:=",ExpressionUUID->"4473ceab-523d-4ada-8961-c9f2acc74e6b"],
 
 Cell[BoxData[
  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
@@ -595,7 +593,8 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"\"\<Time\>\"", ",", "\"\<Position (x)\>\""}], "}"}]}], 
          ",", "\[IndentingNewLine]", 
-         RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
+         RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "->", "250"}]}], "\[IndentingNewLine]", "]"}]}],
        ";", "\[IndentingNewLine]", 
       RowBox[{"VelocityPlot", "=", 
        RowBox[{"Plot", "[", "\[IndentingNewLine]", 
@@ -640,6 +639,10 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"Thick", ",", "Blue"}], "}"}]}], ",", 
          "\[IndentingNewLine]", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Time\>\"", ",", "\"\<Angle of rotation\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
          RowBox[{"PlotRange", "->", "All"}]}], "\[IndentingNewLine]", "]"}]}],
        ";", "\[IndentingNewLine]", 
       RowBox[{"streamPlot", "=", 
@@ -801,9 +804,8 @@ Cell[BoxData[
          RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"GraphicsRow", "[", 
-       RowBox[{"{", 
-        RowBox[{"DisplacementPlot", ",", "StreamPlotXandXd"}], "}"}], 
-       "]"}]}]}], "\n", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "DisplacementPlot", "}"}], "]"}]}]}], "\n", "]"}], ",", 
+   "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
@@ -963,379 +965,11 @@ Cell[BoxData[
    3.942686974762607*^9, {3.942721588658729*^9, 3.942721648047365*^9}, {
    3.942721731660696*^9, 3.942721984940811*^9}, {3.9427220948970413`*^9, 
    3.942722097159058*^9}, {3.942732264028322*^9, 3.942732353585299*^9}, {
-   3.942732404373616*^9, 3.9427324864691563`*^9}},
- CellLabel->"In[17]:=",ExpressionUUID->"6bcf5d1c-8374-40f2-beec-ef33d98316c3"],
-
-Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{$CellContext`cn$$ = 10, $CellContext`kn$$ = 
-    1, $CellContext`M$$ = 0, $CellContext`mn$$ = 1, $CellContext`tmax$$ = 
-    10, $CellContext`x1dVar$$ = 0, $CellContext`x1Var$$ = 
-    0, $CellContext`x2dVar$$ = 0, $CellContext`x2Var$$ = 
-    0, $CellContext`x3dVar$$ = 0, $CellContext`x3Var$$ = 
-    0, $CellContext`Xdd$$ = 0, $CellContext`\[Theta]ddVar$$ = 
-    0, $CellContext`\[Theta]dVar$$ = 0, $CellContext`\[Theta]Var$$ = 
-    0, $CellContext`\[Lambda]1$$ = 0.1, $CellContext`\[Lambda]2$$ = 
-    0.1, $CellContext`\[Tau]$$ = 10000, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[$CellContext`kn$$], 1, "kn"}, 0, 100, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`cn$$], 10, "cn"}, 0, 100, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`mn$$], 1, "mn"}, 0.1, 5, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x1Var$$], 0, "x1"}, -2.99, 2.99, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x1dVar$$], 0, "x1dot"}, -10, 10, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x2Var$$], 0, "x2"}, -2.99, 2.99, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x2dVar$$], 0, "x2dot"}, -10, 10, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x3Var$$], 0, "x3"}, -2.99, 2.99, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`x3dVar$$], 0, "x3dot"}, -10, 10, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`tmax$$], 10, "Time Range"}, 1, 100, 1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`Xdd$$], 0, "Xdd"}, -5, 5, 0.1, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`\[Theta]Var$$], 0, "\[Theta]"}, -0.5, 0.5, 0.05, 
-      ControlType -> Manipulator}, {{
-       Hold[$CellContext`\[Theta]dVar$$], 0, "\[Theta]d"}, -0.5, 0.5, 0.05, 
-      ControlType -> Manipulator}, {{
-       Hold[$CellContext`\[Theta]ddVar$$], 0, "\[Theta]dd"}, -5, 5, 0.1, 
-      ControlType -> Manipulator}, {{
-       Hold[$CellContext`\[Lambda]1$$], 0.1, "\[Lambda]1"}, 0, 1, 0.05, 
-      ControlType -> Manipulator}, {{
-       Hold[$CellContext`\[Lambda]2$$], 0.1, "\[Lambda]2"}, 0, 1, 0.05, 
-      ControlType -> Manipulator}, {{
-       Hold[$CellContext`M$$], 0, "M"}, 0, 10, 0.05, ControlType -> 
-      Manipulator}, {{
-       Hold[$CellContext`\[Tau]$$], 10000, "\[Tau]"}, 0, 50000, 100, 
-      ControlType -> Manipulator}}, Typeset`size$$ = {
-    636.8, {185.77058919270837`, 191.50252278645837`}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, 
-      "Variables" :> {$CellContext`cn$$ = 10, $CellContext`kn$$ = 
-        1, $CellContext`M$$ = 0, $CellContext`mn$$ = 1, $CellContext`tmax$$ = 
-        10, $CellContext`x1dVar$$ = 0, $CellContext`x1Var$$ = 
-        0, $CellContext`x2dVar$$ = 0, $CellContext`x2Var$$ = 
-        0, $CellContext`x3dVar$$ = 0, $CellContext`x3Var$$ = 
-        0, $CellContext`Xdd$$ = 0, $CellContext`\[Theta]ddVar$$ = 
-        0, $CellContext`\[Theta]dVar$$ = 0, $CellContext`\[Theta]Var$$ = 
-        0, $CellContext`\[Lambda]1$$ = 0.1, $CellContext`\[Lambda]2$$ = 
-        0.1, $CellContext`\[Tau]$$ = 10000}, "ControllerVariables" :> {}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
-        Typeset`keyframeList$$}, "Body" :> 
-      Module[{$CellContext`\[Zeta]n$, $CellContext`\[Omega]n$, \
-$CellContext`trajectory$, $CellContext`xddVec$, $CellContext`xVec$, \
-$CellContext`hVec$, $CellContext`mVec$}, {$CellContext`\[Zeta]n$, \
-$CellContext`\[Omega]n$} = $CellContext`DampingAndFreq[$CellContext`kn$$, \
-$CellContext`cn$$, $CellContext`mn$$]; $CellContext`SystemParamsSet = \
-$CellContext`SpringMassDamper[$CellContext`\[Zeta]n$, \
-$CellContext`\[Omega]n$]; $CellContext`system1 = Part[
-           $CellContext`SystemParamsSet[5][$CellContext`Xdd$$, 
-            Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
-            $CellContext`\[Theta][$CellContext`t]][
-            $CellContext`x1[$CellContext`t], 
-            Derivative[1][$CellContext`x1][$CellContext`t]], 
-           2]; $CellContext`system2 = Part[
-           $CellContext`SystemParamsSet[3][$CellContext`Xdd$$, 
-            Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
-            $CellContext`\[Theta][$CellContext`t]][
-            $CellContext`x2[$CellContext`t], 
-            Derivative[1][$CellContext`x2][$CellContext`t]], 
-           2]; $CellContext`system3 = Part[
-           $CellContext`SystemParamsSet[1][$CellContext`Xdd$$, 
-            Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
-            $CellContext`\[Theta][$CellContext`t]][
-            $CellContext`x3[$CellContext`t], 
-            Derivative[1][$CellContext`x3][$CellContext`t]], 
-           2]; $CellContext`hVec$ = {5, 3, 
-          1}; $CellContext`mVec$ = {$CellContext`mn$$, $CellContext`mn$$, \
-$CellContext`mn$$}; $CellContext`angular = \
-$CellContext`ActualAngularAccelerationUpdate[$CellContext`M$$, 
-           3 $CellContext`mn$$, 3, 6, $CellContext`mVec$, {
-            $CellContext`x1[$CellContext`t], 
-            $CellContext`x2[$CellContext`t], 
-            $CellContext`x3[$CellContext`t]}, {
-            Derivative[2][$CellContext`x1][$CellContext`t], 
-            Derivative[2][$CellContext`x2][$CellContext`t], 
-            Derivative[
-            2][$CellContext`x3][$CellContext`t]}, $CellContext`hVec$, \
-$CellContext`\[Tau]$$]; $CellContext`collisionEquation = 
-         Function[{$CellContext`x, $CellContext`sign, \
-$CellContext`\[Lambda]}, $CellContext`sign $CellContext`\[Lambda] 
-           Abs[$CellContext`x]]; $CellContext`R = 
-         2.99; $CellContext`max\[Theta] = 0.03; $CellContext`trajectory$ = 
-         Quiet[
-           
-           NDSolve[{
-            Derivative[
-              1][$CellContext`x1][$CellContext`t] == \
-$CellContext`x1dot[$CellContext`t], 
-             Derivative[
-              1][$CellContext`x2][$CellContext`t] == \
-$CellContext`x2dot[$CellContext`t], 
-             Derivative[
-              1][$CellContext`x3][$CellContext`t] == \
-$CellContext`x3dot[$CellContext`t], 
-             Derivative[
-              2][$CellContext`x1][$CellContext`t] == $CellContext`system1, 
-             Derivative[
-              2][$CellContext`x2][$CellContext`t] == $CellContext`system2, 
-             Derivative[
-              2][$CellContext`x3][$CellContext`t] == $CellContext`system3, \
-$CellContext`x1[0] == $CellContext`x1Var$$, $CellContext`x1dot[
-              0] == $CellContext`x1dVar$$, $CellContext`x2[
-              0] == $CellContext`x2Var$$, $CellContext`x2dot[
-              0] == $CellContext`x2dVar$$, $CellContext`x3[
-              0] == $CellContext`x3Var$$, $CellContext`x3dot[
-              0] == $CellContext`x3dVar$$, 
-             Derivative[
-              3][$CellContext`\[Theta]][$CellContext`t] == \
-$CellContext`angular, $CellContext`\[Theta][0] == $CellContext`\[Theta]Var$$, 
-             Derivative[1][$CellContext`\[Theta]][
-              0] == $CellContext`\[Theta]dVar$$, 
-             Derivative[2][$CellContext`\[Theta]][
-              0] == $CellContext`\[Theta]ddVar$$, 
-             
-             WhenEvent[$CellContext`x1[$CellContext`t] >= $CellContext`R, \
-{$CellContext`x1dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x1dot[$CellContext`t], -1, $CellContext`\
-\[Lambda]1$$], $CellContext`x1[$CellContext`t] -> $CellContext`R}], 
-             
-             WhenEvent[$CellContext`x2[$CellContext`t] >= $CellContext`R, \
-{$CellContext`x2dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x2dot[$CellContext`t], -1, $CellContext`\
-\[Lambda]1$$], $CellContext`x2[$CellContext`t] -> $CellContext`R}], 
-             
-             WhenEvent[$CellContext`x3[$CellContext`t] >= $CellContext`R, \
-{$CellContext`x3dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x3dot[$CellContext`t], -1, $CellContext`\
-\[Lambda]1$$], $CellContext`x3[$CellContext`t] -> $CellContext`R}], 
-             
-             WhenEvent[$CellContext`x1[$CellContext`t] <= -$CellContext`R, \
-{$CellContext`x1dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x1dot[$CellContext`t], 
-                 1, $CellContext`\[Lambda]1$$], \
-$CellContext`x1[$CellContext`t] -> -$CellContext`R}], 
-             
-             WhenEvent[$CellContext`x2[$CellContext`t] <= -$CellContext`R, \
-{$CellContext`x2dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x2dot[$CellContext`t], 
-                 1, $CellContext`\[Lambda]1$$], \
-$CellContext`x2[$CellContext`t] -> -$CellContext`R}], 
-             
-             WhenEvent[$CellContext`x3[$CellContext`t] <= -$CellContext`R, \
-{$CellContext`x3dot[$CellContext`t] -> $CellContext`collisionEquation[
-                 $CellContext`x3dot[$CellContext`t], 
-                 1, $CellContext`\[Lambda]1$$], \
-$CellContext`x3[$CellContext`t] -> -$CellContext`R}], 
-             
-             WhenEvent[$CellContext`\[Theta][$CellContext`t] >= \
-$CellContext`max\[Theta], {$CellContext`\[Theta][$CellContext`t] -> \
-$CellContext`max\[Theta], 
-               Derivative[1][$CellContext`\[Theta]][$CellContext`t] -> 0, 
-               Derivative[
-                2][$CellContext`\[Theta]][$CellContext`t] -> \
-$CellContext`collisionEquation[
-                 Derivative[
-                 2][$CellContext`\[Theta]][$CellContext`t], -1, $CellContext`\
-\[Lambda]2$$]}], 
-             
-             WhenEvent[$CellContext`\[Theta][$CellContext`t] <= \
--$CellContext`max\[Theta], {$CellContext`\[Theta][$CellContext`t] -> \
--$CellContext`max\[Theta], 
-               Derivative[1][$CellContext`\[Theta]][$CellContext`t] -> 0, 
-               Derivative[
-                2][$CellContext`\[Theta]][$CellContext`t] -> \
-$CellContext`collisionEquation[
-                 Derivative[2][$CellContext`\[Theta]][$CellContext`t], 
-                 1, $CellContext`\[Lambda]2$$]}]}, {$CellContext`x1, \
-$CellContext`x1dot, $CellContext`x2, $CellContext`x2dot, $CellContext`x3, \
-$CellContext`x3dot, $CellContext`\[Theta]}, {$CellContext`t, 
-             0, $CellContext`tmax$$}]]; $CellContext`fluidMomentData = 
-         Table[{$CellContext`t, 
-            $CellContext`FluidExertedMoment[
-            3 $CellContext`mn$$, 3, 
-             6, $CellContext`\[Theta]dd, {$CellContext`mn$$, \
-$CellContext`mn$$, $CellContext`mn$$}, 
-             Flatten[
-              ReplaceAll[{
-                $CellContext`x1[$CellContext`t], 
-                $CellContext`x2[$CellContext`t], 
-                $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], 
-             
-             Flatten[
-              ReplaceAll[{
-                $CellContext`a1[$CellContext`t], 
-                $CellContext`a2[$CellContext`t], 
-                $CellContext`a3[$CellContext`t]}, $CellContext`trajectory$]], \
-{5, 3, 1}]}, {$CellContext`t, 0, $CellContext`tmax$$, $CellContext`tmax$$/
-            100}]; $CellContext`centreOfMassData = Table[{$CellContext`t, 
-            $CellContext`CofMassLateralDisplacement[
-             Flatten[
-              ReplaceAll[{
-                $CellContext`x1[$CellContext`t], 
-                $CellContext`x2[$CellContext`t], 
-                $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], \
-$CellContext`R]}, {$CellContext`t, 
-            0, $CellContext`tmax$$, $CellContext`tmax$$/
-            100}]; $CellContext`DisplacementPlot = Plot[
-           Evaluate[
-            ReplaceAll[{
-              $CellContext`x1[$CellContext`t], 
-              $CellContext`x2[$CellContext`t], 
-              $CellContext`x3[$CellContext`t]}, $CellContext`trajectory$]], \
-{$CellContext`t, 0, $CellContext`tmax$$}, 
-           PlotStyle -> {Thick, Red, Blue, Green}, 
-           PlotLegends -> {"x1[t]", "x2[t]", "x3[t]"}, 
-           AxesLabel -> {"Time", "Position (x)"}, PlotRange -> 
-           All]; $CellContext`VelocityPlot = Plot[
-           Evaluate[
-            ReplaceAll[{
-              $CellContext`x1dot[$CellContext`t], 
-              $CellContext`x2dot[$CellContext`t], 
-              $CellContext`x3dot[$CellContext`t]}, \
-$CellContext`trajectory$]], {$CellContext`t, 0, $CellContext`tmax$$}, 
-           PlotStyle -> {Thick, Red, Blue, Green}, 
-           PlotLegends -> {"x1'[t]", "x2'[t]", "x3'[t]"}, 
-           AxesLabel -> {"Time", "Velocity (x')"}, PlotRange -> 
-           All]; $CellContext`AnglePlot = Plot[
-           Evaluate[
-            ReplaceAll[
-             $CellContext`\[Theta][$CellContext`t], \
-$CellContext`trajectory$]], {$CellContext`t, 0, $CellContext`tmax$$}, 
-           PlotStyle -> {Thick, Blue}, PlotRange -> 
-           All]; $CellContext`streamPlot = StreamPlot[
-           $CellContext`SystemParamsSet[
-           5][$CellContext`Xdd$$, $CellContext`\[Theta]dd, $CellContext`\
-\[Theta]][$CellContext`xn, $CellContext`xndot], {$CellContext`xn, \
--$CellContext`R, $CellContext`R}, {$CellContext`xndot, -5, 5}, StreamStyle -> 
-           Arrowheads[0.02]]; $CellContext`ParametricTrajectoryPlot = 
-         ParametricPlot[
-           Evaluate[{
-             ReplaceAll[{
-               $CellContext`x1[$CellContext`t], 
-               $CellContext`x1dot[$CellContext`t]}, $CellContext`trajectory$], 
-             ReplaceAll[{
-               $CellContext`x2[$CellContext`t], 
-               $CellContext`x2dot[$CellContext`t]}, $CellContext`trajectory$], 
-             ReplaceAll[{
-               $CellContext`x3[$CellContext`t], 
-               $CellContext`x3dot[$CellContext`t]}, \
-$CellContext`trajectory$]}], {$CellContext`t, 0, $CellContext`tmax$$}, 
-           PlotStyle -> {Thick, Red, Blue, Green}, 
-           PlotLegends -> {"x1[t]", "x2[t]", "x3[t]"}, 
-           AxesLabel -> {"x", "x'"}, PlotRange -> 
-           All]; $CellContext`combinedTrajectoryPlot = ParametricPlot[
-           Evaluate[{
-             ReplaceAll[{
-               $CellContext`x1[$CellContext`t], 
-               $CellContext`x1dot[$CellContext`t]}, $CellContext`trajectory$], 
-             ReplaceAll[{
-               $CellContext`x2[$CellContext`t], 
-               $CellContext`x2dot[$CellContext`t]}, $CellContext`trajectory$], 
-             ReplaceAll[{
-               $CellContext`x3[$CellContext`t], 
-               $CellContext`x3dot[$CellContext`t]}, \
-$CellContext`trajectory$]}], {$CellContext`t, 0, $CellContext`tmax$$}, 
-           PlotStyle -> {Thick, Red, Blue, Green}, 
-           PlotLegends -> {"x1", "x2", "x3"}, 
-           PlotRange -> {{-$CellContext`R, $CellContext`R}, {-10, 10}}, 
-           AspectRatio -> 1]; $CellContext`momentPlot = 
-         ListPlot[$CellContext`fluidMomentData, Joined -> True, PlotStyle -> 
-           Thick, AxesLabel -> {"Time", "Fluid Moment"}, PlotRange -> 
-           All]; $CellContext`CofMassPlot = 
-         ListPlot[$CellContext`centreOfMassData, Joined -> True, PlotStyle -> 
-           Thick, AxesLabel -> {"Time", "Centre of Mass Location"}, PlotRange -> 
-           All]; $CellContext`StreamPlotXandXd = StreamPlot[
-           $CellContext`SystemParamsSet[
-           5][$CellContext`Xdd$$, $CellContext`\[Theta]ddVar$$, $CellContext`\
-\[Theta]Var$$][$CellContext`x, $CellContext`v], {$CellContext`x, \
--$CellContext`R, $CellContext`R}, {$CellContext`v, -5, 5}, StreamStyle -> 
-           Arrowheads[0.02], StreamPoints -> Fine, 
-           FrameLabel -> {"x (position)", "v (velocity)"}, PlotRange -> All]; 
-        GraphicsRow[{$CellContext`DisplacementPlot, \
-$CellContext`StreamPlotXandXd}]], 
-      "Specifications" :> {{{$CellContext`kn$$, 1, "kn"}, 0, 100, 
-         0.1}, {{$CellContext`cn$$, 10, "cn"}, 0, 100, 
-         0.1}, {{$CellContext`mn$$, 1, "mn"}, 0.1, 5, 
-         0.1}, {{$CellContext`x1Var$$, 0, "x1"}, -2.99, 2.99, 
-         0.1}, {{$CellContext`x1dVar$$, 0, "x1dot"}, -10, 10, 
-         0.1}, {{$CellContext`x2Var$$, 0, "x2"}, -2.99, 2.99, 
-         0.1}, {{$CellContext`x2dVar$$, 0, "x2dot"}, -10, 10, 
-         0.1}, {{$CellContext`x3Var$$, 0, "x3"}, -2.99, 2.99, 
-         0.1}, {{$CellContext`x3dVar$$, 0, "x3dot"}, -10, 10, 
-         0.1}, {{$CellContext`tmax$$, 10, "Time Range"}, 1, 100, 
-         1}, {{$CellContext`Xdd$$, 0, "Xdd"}, -5, 5, 
-         0.1}, {{$CellContext`\[Theta]Var$$, 0, "\[Theta]"}, -0.5, 0.5, 
-         0.05}, {{$CellContext`\[Theta]dVar$$, 0, "\[Theta]d"}, -0.5, 0.5, 
-         0.05}, {{$CellContext`\[Theta]ddVar$$, 0, "\[Theta]dd"}, -5, 5, 
-         0.1}, {{$CellContext`\[Lambda]1$$, 0.1, "\[Lambda]1"}, 0, 1, 
-         0.05}, {{$CellContext`\[Lambda]2$$, 0.1, "\[Lambda]2"}, 0, 1, 
-         0.05}, {{$CellContext`M$$, 0, "M"}, 0, 10, 
-         0.05}, {{$CellContext`\[Tau]$$, 10000, "\[Tau]"}, 0, 50000, 100}}, 
-      "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{
-      948.8347070312499, {252.50445861816416`, 258.23639221191416`}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{{3.9427324061725407`*^9, 3.94273242912805*^9}, {
-  3.942732462242772*^9, 3.942732490659004*^9}},
- CellLabel->"Out[17]=",ExpressionUUID->"4baf4ae0-4707-4ea0-bea0-9b461b94a339"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Evaluate", "[", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"SystemParamsSet", "[", "5", "]"}], "[", 
-    RowBox[{"Xdd", ",", "\[Theta]ddVar", ",", "\[Theta]Var"}], "]"}], "[", 
-   RowBox[{
-    RowBox[{"x1", "[", "t", "]"}], ",", 
-    RowBox[{
-     RowBox[{"x1", "'"}], "[", "t", "]"}]}], "]"}], "]"}]], "Input",
- CellChangeTimes->{{3.942732373884103*^9, 3.942732377901683*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"7994e02b-7bb1-4f90-9233-319d55dfa406"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"SpringMassDamper", "[", 
-     RowBox[{"\[Zeta]n$12136", ",", "\[Omega]n$12136"}], "]"}], "[", "5", 
-    "]"}], "[", 
-   RowBox[{"Xdd", ",", "\[Theta]ddVar", ",", "\[Theta]Var"}], "]"}], "[", 
-  RowBox[{
-   RowBox[{"x1", "[", "t", "]"}], ",", 
-   RowBox[{
-    SuperscriptBox["x1", "\[Prime]",
-     MultilineFunction->None], "[", "t", "]"}]}], "]"}]], "Output",
- CellChangeTimes->{{3.94273236016285*^9, 3.942732378524609*^9}},
- CellLabel->"Out[2]=",ExpressionUUID->"a3666072-d61f-4ab4-8397-0ae3dd0a41c4"]
-}, Open  ]]
+   3.942732404373616*^9, 3.9427324864691563`*^9}, {3.942740212352621*^9, 
+   3.942740219969921*^9}, {3.9427402755730133`*^9, 3.942740276133609*^9}, {
+   3.942740387800016*^9, 3.942740469509736*^9}, {3.942740526426675*^9, 
+   3.9427405292984943`*^9}, {3.942740690585256*^9, 3.942740690839037*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"6bcf5d1c-8374-40f2-beec-ef33d98316c3"]
 },
 WindowSize->{Full, Full},
 WindowMargins->{{316, Automatic}, {Automatic, 50}},
@@ -1355,14 +989,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[554, 20, 7464, 189, 276, "Input",ExpressionUUID->"4473ceab-523d-4ada-8961-c9f2acc74e6b"],
-Cell[CellGroupData[{
-Cell[8043, 213, 32789, 753, 2807, "Input",ExpressionUUID->"6bcf5d1c-8374-40f2-beec-ef33d98316c3"],
-Cell[40835, 968, 18010, 336, 546, "Output",ExpressionUUID->"4baf4ae0-4707-4ea0-bea0-9b461b94a339"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[58882, 1309, 472, 11, 29, "Input",ExpressionUUID->"7994e02b-7bb1-4f90-9233-319d55dfa406"],
-Cell[59357, 1322, 562, 14, 33, "Output",ExpressionUUID->"a3666072-d61f-4ab4-8397-0ae3dd0a41c4"]
-}, Open  ]]
+Cell[8021, 211, 33243, 760, 2848, "Input",ExpressionUUID->"6bcf5d1c-8374-40f2-beec-ef33d98316c3"]
 }
 ]
 *)
